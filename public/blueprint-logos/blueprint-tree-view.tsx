@@ -2,9 +2,7 @@
 
 import { useDeferredValue, useMemo, useState } from "react";
 import blueprintTreeData from "@/data/blueprint-tree.json";
-import { BrandLogo } from "@/components/interfaces/brand-logo";
 import { cn } from "@/lib/utils";
-import { resolveBlueprintLogo } from "@/lib/blueprint-logos";
 import {
   ChevronDown,
   ChevronRight,
@@ -75,27 +73,17 @@ export function BlueprintTreeView() {
 
   const selectedItem = itemsById.get(selectedId) ?? rootItems[0];
 
-  const buildPath = (item: BlueprintItem, humanized = true) => {
+  const buildPath = (item: BlueprintItem) => {
     const segments: string[] = [];
     let current: BlueprintItem | undefined = item;
 
     while (current) {
-      segments.unshift(humanized ? humanizeName(current.name) : current.name);
+      segments.unshift(humanizeName(current.name));
       current = current.parentId !== null ? itemsById.get(current.parentId) : undefined;
     }
 
     return segments;
   };
-
-  const logoById = useMemo(() => {
-    const logos = new Map<number, string | null>();
-
-    for (const item of data) {
-      logos.set(item.id, resolveBlueprintLogo(buildPath(item, false)));
-    }
-
-    return logos;
-  }, [itemsById]);
 
   const searchResults = useMemo(() => {
     if (!deferredSearch) return [];
@@ -226,21 +214,13 @@ export function BlueprintTreeView() {
                       : "border-border/70 hover:bg-secondary/60"
                   )}
                 >
-                  <BrandLogo
-                    alt={humanizeName(item.name)}
-                    className="mt-0.5"
-                    sizeClassName="h-10 w-10 shrink-0"
-                    src={logoById.get(item.id) ?? null}
-                    fallback={
-                      item.type === "folder" ? (
-                        <Folder className="h-4 w-4 text-primary" />
-                      ) : (
-                        <FileText className="h-4 w-4 text-rose-400" />
-                      )
-                    }
-                  />
+                  {item.type === "folder" ? (
+                    <Folder className="mt-0.5 h-4 w-4 text-primary" />
+                  ) : (
+                    <FileText className="mt-0.5 h-4 w-4 text-rose-400" />
+                  )}
                   <span className="min-w-0">
-                      <span className="block text-sm font-medium">{humanizeName(item.name)}</span>
+                    <span className="block text-sm font-medium">{humanizeName(item.name)}</span>
                     {item.description ? (
                       <span className="block text-sm text-muted-foreground">{item.description}</span>
                     ) : null}
@@ -265,7 +245,6 @@ export function BlueprintTreeView() {
                   depth={0}
                   childrenByParent={childrenByParent}
                   collapsedFolders={collapsedFolders}
-                  logoById={logoById}
                   selectedId={selectedId}
                   onToggle={toggleFolder}
                   onSelect={setSelectedId}
@@ -279,26 +258,10 @@ export function BlueprintTreeView() {
       <aside className="flex min-h-0 flex-col overflow-hidden rounded-[28px] border border-border bg-card/75">
         <div className="border-b border-border/80 p-4">
           <div className="text-xs uppercase tracking-[0.2em] text-primary">Inspector</div>
-          <div className="mt-3 flex items-start gap-4">
-            <BrandLogo
-              alt={humanizeName(selectedItem.name)}
-              sizeClassName="h-14 w-14"
-              src={logoById.get(selectedItem.id) ?? null}
-              fallback={
-                selectedItem.type === "folder" ? (
-                  <Folder className="h-6 w-6 text-primary" />
-                ) : (
-                  <FileText className="h-6 w-6 text-rose-400" />
-                )
-              }
-            />
-            <div className="min-w-0">
-              <h3 className="text-xl font-semibold">{humanizeName(selectedItem.name)}</h3>
-              <p className="mt-2 text-sm text-muted-foreground">
-                {selectedItem.description || "No description for this node."}
-              </p>
-            </div>
-          </div>
+          <h3 className="mt-2 text-xl font-semibold">{humanizeName(selectedItem.name)}</h3>
+          <p className="mt-2 text-sm text-muted-foreground">
+            {selectedItem.description || "No description for this node."}
+          </p>
         </div>
         <div className="min-h-0 flex-1 space-y-4 overflow-y-auto p-4 text-sm">
           <div className="rounded-2xl border border-border bg-background/50 p-4">
@@ -352,7 +315,6 @@ type TreeBranchProps = {
   depth: number;
   childrenByParent: Map<number | null, BlueprintItem[]>;
   collapsedFolders: Set<number>;
-  logoById: Map<number, string | null>;
   selectedId: number;
   onToggle: (id: number) => void;
   onSelect: (id: number) => void;
@@ -363,7 +325,6 @@ function TreeBranch({
   depth,
   childrenByParent,
   collapsedFolders,
-  logoById,
   selectedId,
   onToggle,
   onSelect,
@@ -400,18 +361,11 @@ function TreeBranch({
           onClick={() => onSelect(item.id)}
           className="flex min-w-0 flex-1 items-center gap-2 text-left"
         >
-          <BrandLogo
-            alt={humanizeName(item.name)}
-            sizeClassName="h-8 w-8 shrink-0"
-            src={logoById.get(item.id) ?? null}
-            fallback={
-              isFolder ? (
-                <Folder className="h-4 w-4 text-primary" />
-              ) : (
-                <FileText className="h-4 w-4 text-rose-400" />
-              )
-            }
-          />
+          {isFolder ? (
+            <Folder className="h-4 w-4 shrink-0 text-primary" />
+          ) : (
+            <FileText className="h-4 w-4 shrink-0 text-rose-400" />
+          )}
           <span className="min-w-0">
             <span className="block truncate text-sm font-medium">{humanizeName(item.name)}</span>
             {item.description ? (
@@ -430,7 +384,6 @@ function TreeBranch({
               depth={depth + 1}
               childrenByParent={childrenByParent}
               collapsedFolders={collapsedFolders}
-              logoById={logoById}
               selectedId={selectedId}
               onToggle={onToggle}
               onSelect={onSelect}

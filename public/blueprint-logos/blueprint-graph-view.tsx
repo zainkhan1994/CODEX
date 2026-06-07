@@ -4,8 +4,6 @@ import { useDeferredValue, useEffect, useMemo, useRef, useState } from "react";
 import * as d3 from "d3";
 import blueprintTreeData from "@/data/blueprint-tree.json";
 import sampleMindmapData from "@/data/sample-mindmap.json";
-import { BrandLogo } from "@/components/interfaces/brand-logo";
-import { resolveBlueprintLogo } from "@/lib/blueprint-logos";
 import { Search } from "lucide-react";
 
 type RawNode = {
@@ -28,34 +26,13 @@ type BlueprintGraphViewProps = {
   mode?: "workspace" | "demo";
 };
 
-type BlueprintSourceNode = {
+const workspaceNodes: RawNode[] = (blueprintTreeData as Array<{
   id: number;
   name: string;
   description: string;
   type: "folder" | "file";
   parentId: number | null;
-};
-
-const sourceNodes = blueprintTreeData as BlueprintSourceNode[];
-const sourceNodesById = new Map(sourceNodes.map((node) => [node.id, node]));
-
-function buildSourcePath(id: number) {
-  const segments: string[] = [];
-  let current: BlueprintSourceNode | undefined = sourceNodesById.get(id);
-
-  while (current) {
-    segments.unshift(current.name);
-    current = current.parentId !== null ? sourceNodesById.get(current.parentId) : undefined;
-  }
-
-  return segments;
-}
-
-const workspaceLogoById = new Map(
-  sourceNodes.map((node) => [String(node.id), resolveBlueprintLogo(buildSourcePath(node.id))])
-);
-
-const workspaceNodes: RawNode[] = sourceNodes.map((node) => ({
+}>).map((node) => ({
   id: String(node.id),
   name: node.name.replace(/_/g, " "),
   description: node.description,
@@ -103,7 +80,6 @@ function computeDefaultCollapsedNodes(data: RawNode[]) {
 
 export function BlueprintGraphView({ mode = "workspace" }: BlueprintGraphViewProps) {
   const rawData = mode === "workspace" ? workspaceGraphData : sampleGraphData;
-  const logoById = mode === "workspace" ? workspaceLogoById : new Map<string, string | null>();
   const defaultCollapsed = useMemo(() => computeDefaultCollapsedNodes(rawData), [rawData]);
   const [collapsedNodes, setCollapsedNodes] = useState<Set<string>>(new Set(defaultCollapsed));
   const [selectedId, setSelectedId] = useState<string | null>(mode === "workspace" ? "root" : "root");
@@ -287,17 +263,10 @@ export function BlueprintGraphView({ mode = "workspace" }: BlueprintGraphViewPro
                     key={result.id}
                     type="button"
                     onClick={() => handleSearchSelect(result.id)}
-                    className="flex w-full items-start gap-3 rounded-xl px-3 py-2 text-left transition-colors hover:bg-secondary/70"
+                    className="w-full rounded-xl px-3 py-2 text-left transition-colors hover:bg-secondary/70"
                   >
-                    <BrandLogo
-                      alt={result.name}
-                      sizeClassName="h-10 w-10 shrink-0"
-                      src={logoById.get(result.id) ?? null}
-                    />
-                    <div className="min-w-0">
-                      <div className="text-sm font-medium">{result.name}</div>
-                      <div className="truncate text-xs text-muted-foreground">{result.description}</div>
-                    </div>
+                    <div className="text-sm font-medium">{result.name}</div>
+                    <div className="truncate text-xs text-muted-foreground">{result.description}</div>
                   </button>
                 ))}
               </div>
@@ -328,9 +297,6 @@ export function BlueprintGraphView({ mode = "workspace" }: BlueprintGraphViewPro
                   const isSelected = node.data.id === selectedId;
                   const showLabel = labelVisible(node);
                   const hasChildren = Boolean(node.children || node._children);
-                  const logo = logoById.get(node.data.id) ?? null;
-                  const logoRadius = isFolder ? 14 : 11;
-                  const clipId = `logo-clip-${node.data.id}`;
 
                   return (
                     <g
@@ -340,53 +306,23 @@ export function BlueprintGraphView({ mode = "workspace" }: BlueprintGraphViewPro
                       onMouseLeave={() => setHoveredId((current) => (current === node.data.id ? null : current))}
                     >
                       {isSelected ? (
-                        <circle r={logo ? logoRadius + 8 : 20} className="fill-none stroke-[rgba(96,165,250,0.65)] stroke-2" />
+                        <circle r={20} className="fill-none stroke-[rgba(96,165,250,0.65)] stroke-2" />
                       ) : null}
-                      {logo ? (
-                        <>
-                          <clipPath id={clipId}>
-                            <circle r={logoRadius} />
-                          </clipPath>
-                          <circle
-                            r={logoRadius + 1.5}
-                            className="fill-[rgba(8,10,14,0.95)] stroke-[rgba(255,255,255,0.18)] stroke-[1.5]"
-                          />
-                          <image
-                            href={logo}
-                            x={-logoRadius}
-                            y={-logoRadius}
-                            width={logoRadius * 2}
-                            height={logoRadius * 2}
-                            preserveAspectRatio="xMidYMid slice"
-                            clipPath={`url(#${clipId})`}
-                            className="pointer-events-none"
-                          />
-                          <circle
-                            r={logoRadius + 6}
-                            className="fill-transparent cursor-pointer"
-                            onClick={() => {
-                              setSelectedId(node.data.id);
-                              if (hasChildren) handleToggle(node.data.id);
-                            }}
-                          />
-                        </>
-                      ) : (
-                        <circle
-                          r={isFolder ? 13 : 9}
-                          className={
-                            isFolder
-                              ? "fill-[rgba(96,165,250,0.16)] stroke-[rgba(96,165,250,0.92)] stroke-2 cursor-pointer"
-                              : "fill-[rgba(244,114,182,0.12)] stroke-[rgba(244,114,182,0.75)] stroke-[1.5] cursor-pointer"
-                          }
-                          onClick={() => {
-                            setSelectedId(node.data.id);
-                            if (hasChildren) handleToggle(node.data.id);
-                          }}
-                        />
-                      )}
+                      <circle
+                        r={isFolder ? 13 : 9}
+                        className={
+                          isFolder
+                            ? "fill-[rgba(96,165,250,0.16)] stroke-[rgba(96,165,250,0.92)] stroke-2 cursor-pointer"
+                            : "fill-[rgba(244,114,182,0.12)] stroke-[rgba(244,114,182,0.75)] stroke-[1.5] cursor-pointer"
+                        }
+                        onClick={() => {
+                          setSelectedId(node.data.id);
+                          if (hasChildren) handleToggle(node.data.id);
+                        }}
+                      />
                       {showLabel ? (
                         <text
-                          x={logo ? logoRadius + 10 : isFolder ? 20 : 16}
+                          x={isFolder ? 20 : 16}
                           y={4}
                           className={isSelected ? "fill-white text-[12px] font-semibold" : "fill-[rgba(255,255,255,0.76)] text-[11px]"}
                         >
@@ -407,19 +343,10 @@ export function BlueprintGraphView({ mode = "workspace" }: BlueprintGraphViewPro
       <aside className="flex min-h-0 flex-col overflow-hidden rounded-[28px] border border-border bg-card/75">
         <div className="border-b border-border/80 p-4">
           <div className="text-xs uppercase tracking-[0.2em] text-primary">Selection</div>
-          <div className="mt-3 flex items-start gap-4">
-            <BrandLogo
-              alt={selectedNode?.name ?? "Blueprint"}
-              sizeClassName="h-14 w-14"
-              src={selectedNode ? logoById.get(selectedNode.id) ?? null : null}
-            />
-            <div className="min-w-0">
-              <h3 className="text-xl font-semibold">{selectedNode?.name ?? "Blueprint"}</h3>
-              <p className="mt-2 text-sm text-muted-foreground">
-                {selectedNode?.description || "Select a node to inspect its branch in more detail."}
-              </p>
-            </div>
-          </div>
+          <h3 className="mt-2 text-xl font-semibold">{selectedNode?.name ?? "Blueprint"}</h3>
+          <p className="mt-2 text-sm text-muted-foreground">
+            {selectedNode?.description || "Select a node to inspect its branch in more detail."}
+          </p>
         </div>
         <div className="min-h-0 flex-1 space-y-4 overflow-y-auto p-4 text-sm">
           <div className="rounded-2xl border border-border bg-background/50 p-4">
