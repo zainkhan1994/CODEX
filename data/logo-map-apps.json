@@ -1,0 +1,608 @@
+[
+  {
+    "path": "Social_Community/Direct_Messaging/iMessage",
+    "name": "iMessage",
+    "category": "social",
+    "subcategory": "direct-messaging"
+  },
+  {
+    "path": "Social_Community/Direct_Messaging/FaceTime",
+    "name": "FaceTime",
+    "category": "social",
+    "subcategory": "direct-messaging"
+  },
+  {
+    "path": "Social_Community/Direct_Messaging/TextMe",
+    "name": "TextMe",
+    "category": "social",
+    "subcategory": "direct-messaging"
+  },
+  {
+    "path": "Social_Community/Direct_Messaging/TextFree",
+    "name": "TextFree",
+    "category": "social",
+    "subcategory": "direct-messaging"
+  },
+  {
+    "path": "Social_Community/Direct_Messaging/WhatsApp",
+    "name": "WhatsApp",
+    "category": "social",
+    "subcategory": "direct-messaging"
+  },
+  {
+    "path": "Social_Community/Direct_Messaging/Facebook_Messenger",
+    "name": "Messenger",
+    "category": "social",
+    "subcategory": "direct-messaging"
+  },
+  {
+    "path": "Social_Community/Direct_Messaging/Discord",
+    "name": "Discord",
+    "category": "social",
+    "subcategory": "direct-messaging"
+  },
+  {
+    "path": "Social_Community/Direct_Messaging/Slack",
+    "name": "Slack",
+    "category": "social",
+    "subcategory": "direct-messaging"
+  },
+  {
+    "path": "Social_Community/Communities_Groups/Skool",
+    "name": "Skool",
+    "category": "social",
+    "subcategory": "communities"
+  },
+  {
+    "path": "Social_Community/Communities_Groups/Mighty",
+    "name": "Mighty",
+    "category": "social",
+    "subcategory": "communities"
+  },
+  {
+    "path": "Social_Community/Communities_Groups/Reddit",
+    "name": "Reddit",
+    "category": "social",
+    "subcategory": "communities"
+  },
+  {
+    "path": "Social_Community/Communities_Groups/Meetup",
+    "name": "Meetup",
+    "category": "social",
+    "subcategory": "communities"
+  },
+  {
+    "path": "Social_Community/Communities_Groups/Eventbrite",
+    "name": "Eventbrite",
+    "category": "social",
+    "subcategory": "communities"
+  },
+  {
+    "path": "Social_Community/Communities_Groups/LinkedIn_Events",
+    "name": "LinkedIn",
+    "category": "social",
+    "subcategory": "communities"
+  },
+  {
+    "path": "Social_Community/Communities_Groups/Meta_Events",
+    "name": "Meta",
+    "category": "social",
+    "subcategory": "communities"
+  },
+  {
+    "path": "Social_Community/Communities_Groups/Faves",
+    "name": "Faves",
+    "category": "social",
+    "subcategory": "communities"
+  },
+  {
+    "path": "Social_Community/Social_Media/Instagram",
+    "name": "Instagram",
+    "category": "social",
+    "subcategory": "social-media"
+  },
+  {
+    "path": "Social_Community/Social_Media/TikTok",
+    "name": "TikTok",
+    "category": "social",
+    "subcategory": "social-media"
+  },
+  {
+    "path": "Social_Community/Social_Media/Snapchat",
+    "name": "Snapchat",
+    "category": "social",
+    "subcategory": "social-media"
+  },
+  {
+    "path": "Social_Community/Social_Media/Facebook",
+    "name": "Facebook",
+    "category": "social",
+    "subcategory": "social-media"
+  },
+  {
+    "path": "Social_Community/Social_Media/YouTube",
+    "name": "YouTube",
+    "category": "social",
+    "subcategory": "social-media"
+  },
+  {
+    "path": "Social_Community/Social_Media/Threads",
+    "name": "Threads",
+    "category": "social",
+    "subcategory": "social-media"
+  },
+  {
+    "path": "Productivity_Organization/Planning_Notes/Notion",
+    "name": "Notion",
+    "category": "productivity",
+    "subcategory": "planning"
+  },
+  {
+    "path": "Productivity_Organization/Planning_Notes/Obsidian",
+    "name": "Obsidian",
+    "category": "productivity",
+    "subcategory": "planning"
+  },
+  {
+    "path": "Productivity_Organization/Planning_Notes/Apple_Notes",
+    "name": "Notes",
+    "category": "productivity",
+    "subcategory": "planning"
+  },
+  {
+    "path": "Productivity_Organization/Planning_Notes/Google_Tasks",
+    "name": "Tasks",
+    "category": "productivity",
+    "subcategory": "planning"
+  },
+  {
+    "path": "Productivity_Organization/Planning_Notes/Reminders",
+    "name": "Reminders",
+    "category": "productivity",
+    "subcategory": "planning"
+  },
+  {
+    "path": "Productivity_Organization/Planning_Notes/Calendar",
+    "name": "Calendar",
+    "category": "productivity",
+    "subcategory": "planning"
+  },
+  {
+    "path": "Productivity_Organization/Project_Management/Asana",
+    "name": "Asana",
+    "category": "productivity",
+    "subcategory": "project"
+  },
+  {
+    "path": "Productivity_Organization/Project_Management/Miro",
+    "name": "Miro",
+    "category": "productivity",
+    "subcategory": "project"
+  },
+  {
+    "path": "Productivity_Organization/Project_Management/GitHub",
+    "name": "GitHub",
+    "category": "productivity",
+    "subcategory": "project"
+  },
+  {
+    "path": "Productivity_Organization/Project_Management/Google_Cloud",
+    "name": "GCloud",
+    "category": "productivity",
+    "subcategory": "project"
+  },
+  {
+    "path": "Productivity_Organization/Automation_Tools/IFTTT",
+    "name": "IFTTT",
+    "category": "productivity",
+    "subcategory": "automation"
+  },
+  {
+    "path": "Productivity_Organization/Automation_Tools/Shortcuts",
+    "name": "Shortcuts",
+    "category": "productivity",
+    "subcategory": "automation"
+  },
+  {
+    "path": "Productivity_Organization/Automation_Tools/Scriptable",
+    "name": "Scriptable",
+    "category": "productivity",
+    "subcategory": "automation"
+  },
+  {
+    "path": "Productivity_Organization/Automation_Tools/Pythonista",
+    "name": "Pythonista",
+    "category": "productivity",
+    "subcategory": "automation"
+  },
+  {
+    "path": "Productivity_Organization/Automation_Tools/Fireflies",
+    "name": "Fireflies",
+    "category": "productivity",
+    "subcategory": "automation"
+  },
+  {
+    "path": "Finance_Payments/Cash_App",
+    "name": "Cash App",
+    "category": "finance",
+    "subcategory": "finance-apps"
+  },
+  {
+    "path": "Finance_Payments/Venmo",
+    "name": "Venmo",
+    "category": "finance",
+    "subcategory": "finance-apps"
+  },
+  {
+    "path": "Finance_Payments/PayPal",
+    "name": "PayPal",
+    "category": "finance",
+    "subcategory": "finance-apps"
+  },
+  {
+    "path": "Finance_Payments/Rocket_Money",
+    "name": "Rocket",
+    "category": "finance",
+    "subcategory": "finance-apps"
+  },
+  {
+    "path": "Finance_Payments/Acorns",
+    "name": "Acorns",
+    "category": "finance",
+    "subcategory": "finance-apps"
+  },
+  {
+    "path": "Finance_Payments/Wells_Fargo",
+    "name": "Wells Fargo",
+    "category": "finance",
+    "subcategory": "finance-apps"
+  },
+  {
+    "path": "Finance_Payments/Bank_of_America",
+    "name": "BofA",
+    "category": "finance",
+    "subcategory": "finance-apps"
+  },
+  {
+    "path": "Finance_Payments/Western_Union",
+    "name": "W. Union",
+    "category": "finance",
+    "subcategory": "finance-apps"
+  },
+  {
+    "path": "Finance_Payments/Zelle",
+    "name": "Zelle",
+    "category": "finance",
+    "subcategory": "finance-apps"
+  },
+  {
+    "path": "Finance_Payments/Plaid",
+    "name": "Plaid",
+    "category": "finance",
+    "subcategory": "finance-apps"
+  },
+  {
+    "path": "Finance_Payments/SquareUp",
+    "name": "Square",
+    "category": "finance",
+    "subcategory": "finance-apps"
+  },
+  {
+    "path": "Shopping_Rewards/Retail/Amazon",
+    "name": "Amazon",
+    "category": "shopping",
+    "subcategory": "retail"
+  },
+  {
+    "path": "Shopping_Rewards/Retail/Walmart",
+    "name": "Walmart",
+    "category": "shopping",
+    "subcategory": "retail"
+  },
+  {
+    "path": "Shopping_Rewards/Retail/Target",
+    "name": "Target",
+    "category": "shopping",
+    "subcategory": "retail"
+  },
+  {
+    "path": "Shopping_Rewards/Retail/Lowes",
+    "name": "Lowes",
+    "category": "shopping",
+    "subcategory": "retail"
+  },
+  {
+    "path": "Shopping_Rewards/Retail/Home_Depot",
+    "name": "Home Depot",
+    "category": "shopping",
+    "subcategory": "retail"
+  },
+  {
+    "path": "Shopping_Rewards/Retail/Office_Depot",
+    "name": "Office Depot",
+    "category": "shopping",
+    "subcategory": "retail"
+  },
+  {
+    "path": "Shopping_Rewards/Retail/eBay",
+    "name": "eBay",
+    "category": "shopping",
+    "subcategory": "retail"
+  },
+  {
+    "path": "Shopping_Rewards/Retail/Temu",
+    "name": "Temu",
+    "category": "shopping",
+    "subcategory": "retail"
+  },
+  {
+    "path": "Shopping_Rewards/Retail/Etsy",
+    "name": "Etsy",
+    "category": "shopping",
+    "subcategory": "retail"
+  },
+  {
+    "path": "Shopping_Rewards/Food_Coffee/Chick-fil-A",
+    "name": "Chick-fil-A",
+    "category": "shopping",
+    "subcategory": "food"
+  },
+  {
+    "path": "Shopping_Rewards/Food_Coffee/Dutch_Bros",
+    "name": "Dutch Bros",
+    "category": "shopping",
+    "subcategory": "food"
+  },
+  {
+    "path": "Shopping_Rewards/Food_Coffee/Starbucks",
+    "name": "Starbucks",
+    "category": "shopping",
+    "subcategory": "food"
+  },
+  {
+    "path": "Shopping_Rewards/Food_Coffee/DoorDash",
+    "name": "DoorDash",
+    "category": "shopping",
+    "subcategory": "food"
+  },
+  {
+    "path": "Shopping_Rewards/Food_Coffee/Uber_Eats",
+    "name": "Uber Eats",
+    "category": "shopping",
+    "subcategory": "food"
+  },
+  {
+    "path": "Shopping_Rewards/Shipping_Tracking/UPS",
+    "name": "UPS",
+    "category": "shopping",
+    "subcategory": "shipping"
+  },
+  {
+    "path": "Shopping_Rewards/Shipping_Tracking/FedEx",
+    "name": "FedEx",
+    "category": "shopping",
+    "subcategory": "shipping"
+  },
+  {
+    "path": "Shopping_Rewards/Shipping_Tracking/USPS_Mobile",
+    "name": "USPS",
+    "category": "shopping",
+    "subcategory": "shipping"
+  },
+  {
+    "path": "Navigation_Travel/Maps_Transport/Google_Maps",
+    "name": "Google Maps",
+    "category": "navigation",
+    "subcategory": "maps"
+  },
+  {
+    "path": "Navigation_Travel/Maps_Transport/Apple_Maps",
+    "name": "Apple Maps",
+    "category": "navigation",
+    "subcategory": "maps"
+  },
+  {
+    "path": "Navigation_Travel/Maps_Transport/Yandex_Maps",
+    "name": "Yandex",
+    "category": "navigation",
+    "subcategory": "maps"
+  },
+  {
+    "path": "Navigation_Travel/Maps_Transport/ParkMobile",
+    "name": "ParkMobile",
+    "category": "navigation",
+    "subcategory": "maps"
+  },
+  {
+    "path": "Navigation_Travel/Maps_Transport/Uber",
+    "name": "Uber",
+    "category": "navigation",
+    "subcategory": "maps"
+  },
+  {
+    "path": "Navigation_Travel/Maps_Transport/Lyft",
+    "name": "Lyft",
+    "category": "navigation",
+    "subcategory": "maps"
+  },
+  {
+    "path": "Navigation_Travel/Housing_Weather/Apartments_App",
+    "name": "Apartments",
+    "category": "navigation",
+    "subcategory": "housing"
+  },
+  {
+    "path": "Navigation_Travel/Housing_Weather/Weather",
+    "name": "Weather",
+    "category": "navigation",
+    "subcategory": "housing"
+  },
+  {
+    "path": "Health_Fitness/MyChart",
+    "name": "MyChart",
+    "category": "health",
+    "subcategory": "health-apps"
+  },
+  {
+    "path": "Health_Fitness/BetterSleep",
+    "name": "BetterSleep",
+    "category": "health",
+    "subcategory": "health-apps"
+  },
+  {
+    "path": "Health_Fitness/PT_Solutions",
+    "name": "PT Solutions",
+    "category": "health",
+    "subcategory": "health-apps"
+  },
+  {
+    "path": "Health_Fitness/Noji",
+    "name": "Noji",
+    "category": "health",
+    "subcategory": "health-apps"
+  },
+  {
+    "path": "Health_Fitness/Healow",
+    "name": "Healow",
+    "category": "health",
+    "subcategory": "health-apps"
+  },
+  {
+    "path": "Health_Fitness/Life_Time",
+    "name": "Life Time",
+    "category": "health",
+    "subcategory": "health-apps"
+  },
+  {
+    "path": "Health_Fitness/Weight_Gurus",
+    "name": "Weight Gurus",
+    "category": "health",
+    "subcategory": "health-apps"
+  },
+  {
+    "path": "Health_Fitness/Go_Kinetic",
+    "name": "Go Kinetic",
+    "category": "health",
+    "subcategory": "health-apps"
+  },
+  {
+    "path": "Health_Fitness/Elevate",
+    "name": "Elevate",
+    "category": "health",
+    "subcategory": "health-apps"
+  },
+  {
+    "path": "Health_Fitness/Think_Dirty",
+    "name": "Think Dirty",
+    "category": "health",
+    "subcategory": "health-apps"
+  },
+  {
+    "path": "Learning_Self-Improvement/Duolingo",
+    "name": "Duolingo",
+    "category": "learning",
+    "subcategory": "learning-apps"
+  },
+  {
+    "path": "Learning_Self-Improvement/Mimo",
+    "name": "Mimo",
+    "category": "learning",
+    "subcategory": "learning-apps"
+  },
+  {
+    "path": "Learning_Self-Improvement/Brilliant",
+    "name": "Brilliant",
+    "category": "learning",
+    "subcategory": "learning-apps"
+  },
+  {
+    "path": "Learning_Self-Improvement/Quizgecko",
+    "name": "Quizgecko",
+    "category": "learning",
+    "subcategory": "learning-apps"
+  },
+  {
+    "path": "Learning_Self-Improvement/Information_Reading",
+    "name": "Reading",
+    "category": "learning",
+    "subcategory": "learning-apps"
+  },
+  {
+    "path": "Entertainment_Media/Streaming/Netflix",
+    "name": "Netflix",
+    "category": "entertainment",
+    "subcategory": "streaming"
+  },
+  {
+    "path": "Entertainment_Media/Streaming/Hulu",
+    "name": "Hulu",
+    "category": "entertainment",
+    "subcategory": "streaming"
+  },
+  {
+    "path": "Entertainment_Media/Streaming/Max",
+    "name": "Max",
+    "category": "entertainment",
+    "subcategory": "streaming"
+  },
+  {
+    "path": "Entertainment_Media/Streaming/Prime_Video",
+    "name": "Prime",
+    "category": "entertainment",
+    "subcategory": "streaming"
+  },
+  {
+    "path": "Entertainment_Media/Streaming/Disney_Plus",
+    "name": "Disney+",
+    "category": "entertainment",
+    "subcategory": "streaming"
+  },
+  {
+    "path": "Entertainment_Media/Streaming/Crunchyroll",
+    "name": "Crunchyroll",
+    "category": "entertainment",
+    "subcategory": "streaming"
+  },
+  {
+    "path": "Entertainment_Media/Streaming/YouTube",
+    "name": "YouTube",
+    "category": "entertainment",
+    "subcategory": "streaming"
+  },
+  {
+    "path": "Entertainment_Media/Devices_Control/VIZIO",
+    "name": "VIZIO",
+    "category": "entertainment",
+    "subcategory": "devices"
+  },
+  {
+    "path": "Entertainment_Media/Devices_Control/Apple_TV_Remote",
+    "name": "Apple TV",
+    "category": "entertainment",
+    "subcategory": "devices"
+  },
+  {
+    "path": "AI_Knowledge_Tools/ChatGPT",
+    "name": "ChatGPT",
+    "category": "ai",
+    "subcategory": "ai-tools"
+  },
+  {
+    "path": "AI_Knowledge_Tools/Claude",
+    "name": "Claude",
+    "category": "ai",
+    "subcategory": "ai-tools"
+  },
+  {
+    "path": "AI_Knowledge_Tools/Perplexity",
+    "name": "Perplexity",
+    "category": "ai",
+    "subcategory": "ai-tools"
+  },
+  {
+    "path": "AI_Knowledge_Tools/Rewind",
+    "name": "Rewind",
+    "category": "ai",
+    "subcategory": "ai-tools"
+  }
+]

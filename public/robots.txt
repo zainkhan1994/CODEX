@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://zainkhan1994.github.io/CODEX/sitemap.xml
+
+# Disallow crawling of unnecessary paths
+Disallow: /api/
+Disallow: /.next/
+Disallow: /node_modules/

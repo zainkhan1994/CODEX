@@ -1,0 +1,81 @@
+/* ===========================
+   SVG Text Drawing Animation
+   =========================== */
+
+@keyframes welcometext {
+  0% {
+    stroke-dashoffset: var(--dash-offset, 1000);
+    fill: transparent;
+    opacity: 0.6;
+  }
+  80% {
+    stroke-dashoffset: 0;
+    fill: transparent;
+    opacity: 1;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    fill: var(--text-fill-color, currentColor);
+    opacity: 1;
+  }
+}
+
+.animated-svg-text {
+  stroke: var(--text-stroke-color, currentColor);
+  fill: transparent;
+  stroke-width: 1.5px;
+  stroke-dasharray: var(--dash-offset, 1000);
+  stroke-dashoffset: var(--dash-offset, 1000);
+  animation: welcometext var(--anim-duration, 3s) ease forwards;
+}
+
+/* ===========================
+   3D Carousel / Slider
+   =========================== */
+
+.slider-3d-container {
+  perspective: 1000px;
+  perspective-origin: 50% 50%;
+  width: 100%;
+  position: relative;
+}
+
+.slider-3d-scene {
+  transform-style: preserve-3d;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.1s linear;
+}
+
+.slider-3d-item {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform-style: preserve-3d;
+  transform:
+    translateX(-50%)
+    translateY(-50%)
+    rotateY(calc(var(--position-index, 0) * (360deg / var(--total-items, 6))))
+    translateZ(var(--translate-z, 45vmin));
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+/* ===========================
+   Reduced Motion Support
+   =========================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .animated-svg-text {
+    animation: none;
+    fill: currentColor;
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+
+  .slider-3d-scene {
+    animation: none !important;
+    transition: none !important;
+  }
+}
