@@ -46,7 +46,7 @@ const interfaceItems: InterfaceItem[] = [
     kind: "Primary",
     href: "/blueprint/tree",
     description: "The original organizer UI with toolbar actions, tree navigation, search, and export controls.",
-    group: "Workspace",
+    group: "Blueprint Workspace",
   },
   {
     id: "graph",
@@ -54,7 +54,7 @@ const interfaceItems: InterfaceItem[] = [
     kind: "Primary",
     href: "/blueprint/graph",
     description: "The graph-first explorer for navigating Blueprint data spatially from a high-level overview.",
-    group: "Workspace",
+    group: "Blueprint Workspace",
   },
   {
     id: "logo-map",
@@ -62,7 +62,7 @@ const interfaceItems: InterfaceItem[] = [
     kind: "Native",
     href: "/blueprint/logo-map",
     description: "Category-based app/logo exploration with grid and mini mind-map modes.",
-    group: "Workspace",
+    group: "Blueprint Workspace",
   },
   {
     id: "mindmap-demo",
@@ -77,7 +77,7 @@ const interfaceItems: InterfaceItem[] = [
     label: "Portfolio Home",
     kind: "Primary",
     href: "/portfolio",
-    description: "The public-facing landing experience wrapped inside the same unified application shell.",
+    description: "The public-facing Blueprint landing experience with the current portfolio narrative.",
     group: "Portfolio Site",
   },
   {
@@ -204,7 +204,7 @@ export function InterfaceExplorer({
         return (
           embeddedPage ?? (
             <div className="flex h-full items-center justify-center rounded-[28px] border border-dashed border-border bg-card/60 p-8 text-sm text-muted-foreground">
-              This route is expected to render inside the CODEX shell.
+              This route is expected to render inside the Blueprint shell.
             </div>
           )
         );
@@ -216,6 +216,7 @@ export function InterfaceExplorer({
 
   const selectedIcon = itemIcons[selectedId];
   const Icon = selectedIcon;
+  const immersiveView = selectedId === "tree";
 
   return (
     <section className="relative h-[calc(100svh-3.5rem)] overflow-hidden bg-[linear-gradient(180deg,hsl(var(--background)),hsl(var(--background))_45%,rgba(24,26,34,0.96))]">
@@ -231,7 +232,7 @@ export function InterfaceExplorer({
                 <LayoutPanelLeft className="h-6 w-6" />
               </div>
               <div className="min-w-0">
-                <div className="text-2xl font-semibold tracking-tight">CODEX</div>
+                <div className="text-2xl font-semibold tracking-tight">Blueprint</div>
                 <div className="text-sm text-muted-foreground">Unified interface workspace</div>
               </div>
             </div>
@@ -310,32 +311,33 @@ export function InterfaceExplorer({
           </button>
         </aside>
 
-        <div className="flex min-w-0 flex-1 flex-col gap-4 overflow-hidden">
-          <div className="rounded-[28px] border border-border bg-card/75 p-5 backdrop-blur">
-            <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
-              <div className="min-w-0">
-                <div className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-3 py-1 text-xs uppercase tracking-[0.2em] text-primary">
-                  <Icon className="h-3.5 w-3.5" />
-                  {selectedItem.kind}
+        <div className={cn("flex min-w-0 flex-1 flex-col overflow-hidden", !immersiveView && "gap-4")}>
+          {!immersiveView ? (
+            <div className="rounded-[28px] border border-border bg-card/75 p-5 backdrop-blur">
+              <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+                <div className="min-w-0">
+                  <div className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-3 py-1 text-xs uppercase tracking-[0.2em] text-primary">
+                    <Icon className="h-3.5 w-3.5" />
+                    {selectedItem.kind}
+                  </div>
+                  <h1 className="mt-3 text-3xl font-semibold tracking-tight">{selectedItem.label}</h1>
+                  <p className="mt-2 max-w-4xl text-sm leading-7 text-muted-foreground">
+                    {selectedItem.description}
+                  </p>
                 </div>
-                <h1 className="mt-3 text-3xl font-semibold tracking-tight">{selectedItem.label}</h1>
-                <p className="mt-2 max-w-4xl text-sm leading-7 text-muted-foreground">
-                  {selectedItem.description}
-                </p>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setSelectedId("tree");
+                    if (pathname !== "/") router.replace("/", { scroll: false });
+                  }}
+                  className="inline-flex items-center gap-2 rounded-xl border border-border px-4 py-2 text-sm text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
+                >
+                  Reset to organizer
+                </button>
               </div>
-              <button
-                type="button"
-                onClick={() => {
-                  setSelectedId("tree");
-                  if (pathname !== "/") router.replace("/", { scroll: false });
-                }}
-                className="inline-flex items-center gap-2 rounded-xl border border-border px-4 py-2 text-sm text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
-              >
-                Reset to organizer
-              </button>
             </div>
-          </div>
-
+          ) : null}
           <div className="min-h-0 flex-1 overflow-hidden">{content}</div>
         </div>
       </div>
